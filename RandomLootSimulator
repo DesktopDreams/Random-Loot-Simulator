@@ -1,0 +1,31 @@
+#A simple random simulator that gives you loots.
+import random
+inventory = {
+    'Wooden Sword': '1',
+    'Gold coins': '500',
+    'Basic Health Potion': '2'
+}
+
+itemGenerator = {
+    'Weapon': ['Stone Sword', 'Diamond Sword', 'Hokuto Bow'],
+    'Materials': ['Ruby', 'Gold', 'Crystal'],
+    'Gold coins': ''
+}
+
+def displayInventory():
+    for k, v in inventory.items():
+        print('You have: ' + v + 'x ' + k + '.')
+
+def randomLoot():
+    newLoot = {}
+    typeOfLoot = random.choices(itemGenerator.keys())
+    lootItems = random.choices(typeOfLoot())
+    print(lootItems)
+
+
+print('Welcome new player!')
+print('What is your name?')
+name = input()
+print('Great! ' + str(name) + ',' + ' here is your starting items: ')
+displayInventory()
+randomLoot()
