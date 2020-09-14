@@ -1,0 +1,6 @@
+This is my take on the Fantasy Inventory Game from ATBS v2 - Chapter 5 project.
+I created this project with the goal of implementing a randomly generated set of loot, with a set of probability.
+I also learnt git and applied them during this project.
+
+Resource(s) that have helped me:
+    https://stackoverflow.com/questions/4859292/how-to-get-a-random-value-from-dictionary-in-python

@@ -12,10 +12,12 @@ itemGenerator = {
     'Gold coins': ''
 }
 
+#Function to display player's inventory.
 def displayInventory():
     for k, v in inventory.items():
-        print('You have: ' + v + 'x ' + k + '.')
+        print('You have: ' + str(v) + 'x ' + str(k) + '.')
 
+#Function to generate randomized loot.
 def randomLoot():
     newLoot = {}
     for k in itemGenerator.items():
@@ -31,12 +33,32 @@ def randomLoot():
         elif k == 'Gold coins':
             newLoot.setdefault(k, random.randint(50, 500))
             break
-    print(newLoot)
+    return newLoot
+
+#Function to add new loot to existing inventory.
+def addMoreLoot(inventory, addItems):
+    for k, v in addItems.items():
+        inventory.setdefault(k, v)
+    return inventory
+
+
 
 print('Welcome new player!')
 print('What is your name?')
 name = input()
 print('Great! ' + str(name) + ',' + ' here is your starting items: ')
 displayInventory()
-randomLoot()
+
+print('Would you like to obtain more loot?')
+print('Type yes for more loot, and no if you would like to exit the game')
+while True:
+    moreLoot = str(input())
+    if moreLoot == 'yes':
+        inventory = addMoreLoot(inventory, randomLoot())
+        displayInventory()
+        print('Type yes for more loot, and no if you would like to exit the game')
+        continue
+    elif moreLoot == 'no':
+        print('Thank you for playing!')
+        break
 
