@@ -1,15 +1,15 @@
 #A simple random simulator that gives you loots.
 import random
 inventory = {
-    'Wooden Sword': '1',
-    'Gold coins': '500',
-    'Basic Health Potion': '2'
+    'Wooden Sword': 1,
+    'Gold coins': 500,
+    'Basic Health Potion': 2
 }
 
 itemGenerator = {
     'Weapon': ['Stone Sword', 'Diamond Sword', 'Hokuto Bow'],
     'Materials': ['Ruby', 'Gold', 'Crystal'],
-    'Gold coins': ''
+    'Currency': 'Gold coins'
 }
 
 #Function to display player's inventory.
@@ -30,8 +30,9 @@ def randomLoot():
             v = random.choice(list(itemGenerator[k]))
             newLoot.setdefault(v, random.randint(1, 25))
             break
-        elif k == 'Gold coins':
-            newLoot.setdefault(k, random.randint(50, 500))
+        elif k == 'Currency':
+            v = itemGenerator[k]
+            newLoot.setdefault(v, random.randint(50, 500))
             break
     return newLoot
 
@@ -41,7 +42,6 @@ def addMoreLoot(inventory, addItems):
         inventory.setdefault(k, 0)
         inventory[k] += v
     return inventory
-
 
 
 print('Welcome new player!')
